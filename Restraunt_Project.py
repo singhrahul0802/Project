@@ -59,3 +59,38 @@ user.reviews.append(Review(user, food_item, 4, "Great burger!"))
 user.wishlist.append(food_item)
 user.cart.append(food_item)
 
+
+
+ """Cart Functionality"""
+
+ def calculate_total_price(cart):
+    total_price = sum(item.price for item in cart)
+    return total_price
+
+# Calculate total price in cart
+ total_price = calculate_total_price(user.cart)
+ print("Total Price in Cart:", total_price)
+
+
+### 5. Review Management
+# Get reviews by a particular user
+ user_reviews = [review for review in user.reviews]
+
+# Add new review
+ review = Review(user, food_item, 5, "Delicious!")
+ user.reviews.append(review)
+
+
+ """Badge System"""
+
+ class BadgeSystem:
+    def __init__(self):
+        self.badges = {}
+
+    def assign_badge(self, user, badge):
+        if user.username not in self.badges:
+            self.badges[user.username] = []
+        self.badges[user.username].append(badge)
+
+    def get_badges(self, user):
+        return self.badges.get(user.username, [])
