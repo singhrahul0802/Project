@@ -94,3 +94,50 @@ user.cart.append(food_item)
 
     def get_badges(self, user):
         return self.badges.get(user.username, [])
+    
+
+ """ Like/Dislike Feature:"""
+
+# Implementing like/dislike functionality can be done within the `Review` class:
+
+ class Review:
+    def __init__(self, user, food_item, rating, comment=None):
+        self.user = user
+        self.food_item = food_item
+        self.rating = rating
+        self.comment = comment
+        self.likes = 0
+        self.dislikes = 0
+
+    def like(self):
+        self.likes += 1
+
+    def dislike(self):
+        self.dislikes += 1
+
+ """Filtering:"""
+
+#Implement filtering functionality as standalone functions:
+
+ def filter_most_popular(reviews, ascending=True):
+    sorted_reviews = sorted(reviews, key=lambda x: len(x.food_item.reviews), reverse=not ascending)
+    return sorted_reviews
+
+ def filter_by_time(reviews, ascending=True):
+    sorted_reviews = sorted(reviews, key=lambda x: x.time, reverse=not ascending)
+    return sorted_reviews
+
+ def filter_by_name(reviews, ascending=True):
+    sorted_reviews = sorted(reviews, key=lambda x: x.food_item.name, reverse=not ascending)
+    return sorted_reviews
+
+
+ """Tags for Food Items:"""
+
+#Tags functionality is already included in the `FoodItem` class:
+ food_item = FoodItem("Burger", 5.99, restaurant, 2, 2, tags=["spicy", "non veg"])
+
+### 10. User Authentication:
+ """User authentication can be implemented separately based on specific requirements.
+ This breakdown provides an organized way to implement the project functionalities using Python classes, functions, and data structures.
+  You can further expand upon each functionality as need."""
